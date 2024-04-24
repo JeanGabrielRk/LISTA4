@@ -48,13 +48,13 @@ public class Programa {
             }
         }
 
-        System.out.println("Digite o número do mês que deseja listar os compromissos:");
-int numeroMes = leitor.nextInt();
+    System.out.println("Digite o número do mês que deseja listar os compromissos:");
+    int numeroMes = leitor.nextInt();
 
-System.out.println("Compromissos para o mês " + numeroMes + ":");
-System.out.println(calendario.listarCompromissos(numeroMes));
+    System.out.println("Compromissos para o mês " + numeroMes + ":");
+    System.out.println(calendario.listarCompromissos(numeroMes));
 
-        System.out.println("Todos os compromissos do ano:");
-        System.out.println(calendario.listarCompromissos());
+    System.out.println("Todos os compromissos do ano:");
+    System.out.println(calendario.listarCompromissos());
     }
 }
