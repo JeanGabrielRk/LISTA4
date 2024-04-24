@@ -1,6 +1,6 @@
 package br.edu.up.modelos;
 
-public class Livro {
+public class Livro {KG
 
     private String codigo;
     private String titulo;
