@@ -21,7 +21,7 @@ public class Programa {
         System.out.println("Livro 2");
         System.out.println("Codigo: " + livro2.getCodigo());
         System.out.println("Titulo: " + livro2.getTitulo());
-        System.out.println("Autores: " + livro2.getAutores());
+        System.out.println("Autore: " + livro2.getAutores());
         System.out.println("ISBN: " + livro2.getIsbn());
         System.out.println("Ano: " + livro2.getAno());
     }
