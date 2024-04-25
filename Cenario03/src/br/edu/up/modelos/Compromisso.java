@@ -45,5 +45,10 @@ public class Compromisso {
     public void setHora(int hora) {
         this.hora = hora;
     }
+
+    public String toString() {
+        return "Pessoa: " + pessoa + ", Local: " + local + ", Assunto: " + assunto + ", Hora: " + hora;
+    }
     
+
 }

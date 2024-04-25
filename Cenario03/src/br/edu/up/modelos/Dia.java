@@ -1,81 +1,69 @@
 package br.edu.up.modelos;
 
+import java.util.Scanner;
+
 public class Dia {
 
     private int diaMes;
     private Compromisso[] compromissos;
+    private int numCompromissos;
 
     public Dia(int diaMes) {
         this.diaMes = diaMes;
-        this.compromissos = new Compromisso[0]; 
+        this.compromissos = new Compromisso[10]; 
+        this.numCompromissos = 0;
     }
 
-    public int getDiaMes() {
-        return diaMes;
-    }
+    public void adicionarCompromisso(Scanner leitor) {
+        if (numCompromissos < compromissos.length) {
+            System.out.println("Digite a pessoa do compromisso: ");
+            String pessoa = leitor.next();
 
-    public void setDiaMes(int diaMes) {
-        this.diaMes = diaMes;
-    }
+            System.out.println("Digite o local: ");
+            String local = leitor.next();
 
-    public Compromisso[] getCompromissos() {
-        return compromissos;
-    }
+            System.out.println("Digite o assunto: ");
+            String assunto = leitor.next();
 
-    public void setCompromissos(Compromisso[] compromissos) {
-        this.compromissos = compromissos;
-    }
+            System.out.println("Digite a hora: ");
+            int hora = leitor.nextInt();
 
-    public void adicionarCompromisso(Compromisso compromisso) {
-
-        Compromisso[] novoArray = new Compromisso[compromissos.length + 1];
-        
-        for (int i = 0; i < compromissos.length; i++) {
-            novoArray[i] = compromissos[i];
+            Compromisso compromisso = new Compromisso(pessoa, local, assunto, hora);
+            compromissos[numCompromissos] = compromisso;
+            numCompromissos++;
+        } else {
+            System.out.println("Não é possível adicionar mais compromissos.");
         }
-        
-        novoArray[compromissos.length] = compromisso;
-        
-        compromissos = novoArray;
     }
 
-    public Compromisso consultarCompromisso(int hora) {
-        for (Compromisso compromisso : compromissos) {
-            if (compromisso.getHora() == hora) {
-                return compromisso;
+    public void listarCompromissos() {
+        if (numCompromissos == 0) {
+            System.out.println("Não há compromissos para este dia.");
+        } else {
+            for (int i = 0; i < numCompromissos; i++) {
+                System.out.println((i + 1) + " - " + compromissos[i]);
             }
         }
-        return null; 
     }
 
-    public void excluirCompromisso(int hora) {
-        Compromisso compromissoParaExcluir = null;
-        for (Compromisso compromisso : compromissos) {
-            if (compromisso.getHora() == hora) {
-                compromissoParaExcluir = compromisso;
-                break;
-            }
-        }
-        if (compromissoParaExcluir != null) {
-
-            Compromisso[] novoArray = new Compromisso[compromissos.length - 1];
-            int idx = 0;
-
-            for (Compromisso compromisso : compromissos) {
-                if (compromisso != compromissoParaExcluir) {
-                    novoArray[idx++] = compromisso;
-                }
-            }
-
-            compromissos = novoArray;
+    public void consultarCompromisso(int indice) {
+        if (indice >= 0 && indice < numCompromissos) {
+            System.out.println(compromissos[indice]);
+        } else {
+            System.out.println("Índice inválido.");
         }
     }
 
-    public String listarCompromissos() {
-        StringBuilder sb = new StringBuilder();
-        for (Compromisso compromisso : compromissos) {
-            sb.append(compromisso.toString()).append("\n");
+    public void excluirCompromisso(int indice) {
+        if (indice >= 0 && indice < numCompromissos) {
+            for (int i = indice; i < numCompromissos - 1; i++) {
+                compromissos[i] = compromissos[i + 1];
+            }
+            compromissos[numCompromissos - 1] = null;
+            numCompromissos--;
+            System.out.println("Compromisso excluído com sucesso.");
+        } else {
+            System.out.println("Índice inválido.");
         }
-        return sb.toString();
     }
 }

@@ -8,53 +8,47 @@ public class Programa {
         
         Scanner leitor = new Scanner(System.in);
 
-        System.out.println("Digite o ano:");
-        int ano = leitor.nextInt();
+        System.out.println("Digite o dia do compromisso: ");
+        int dia = leitor.nextInt();
 
-        System.out.println("O ano é bissexto? (true/false):");
-        boolean bissexto = leitor.nextBoolean();
-
-        Ano calendario = new Ano(ano, bissexto);
+        Dia diaCompromisso = new Dia(dia);
 
         while (true) {
-            System.out.println("Digite o nome do mês:");
-            String nomeMes = leitor.next();
+            System.out.println("\n------ Menu ------");
+            System.out.println("1. Adicionar compromisso");
+            System.out.println("2. Listar compromissos do dia");
+            System.out.println("3. Consultar compromisso");
+            System.out.println("4. Excluir compromisso");
+            System.out.println("5. Sair");
+            System.out.println("------------------");
+            System.out.println("Escolha uma opção: ");
+            int opcao = leitor.nextInt();
 
-            System.out.println("Digite o dia do mês:");
-            int dia = leitor.nextInt();
-
-            System.out.println("Digite a hora do compromisso:");
-            int hora = leitor.nextInt();
-            leitor.nextLine(); 
-
-            System.out.println("Digite o nome da pessoa:");
-            String pessoa = leitor.nextLine();
-
-            System.out.println("Digite o local do compromisso:");
-            String local = leitor.nextLine();
-
-            System.out.println("Digite o assunto do compromisso:");
-            String assunto = leitor.nextLine();
-
-            Compromisso compromisso = new Compromisso(pessoa, local, assunto, hora);
-
-            calendario.adicionarCompromisso(2, compromisso, dia);
-
-            System.out.println("Deseja adicionar outro compromisso? (s/n):"); 
-            String resposta = leitor.nextLine();
-
-            if (!resposta.equalsIgnoreCase("s")) {
-                break;
+            switch (opcao) {
+                case 1:
+                    diaCompromisso.adicionarCompromisso(leitor);
+                    break;
+                case 2:
+                    diaCompromisso.listarCompromissos();
+                    break;
+                case 3:
+                    System.out.println("Digite o índice do compromisso a ser consultado: ");
+                    int indiceConsulta = leitor.nextInt();
+                    diaCompromisso.consultarCompromisso(indiceConsulta);
+                    break;
+                case 4:
+                    System.out.println("Digite o índice do compromisso a ser excluído: ");
+                    int indiceExclusao = leitor.nextInt();
+                    diaCompromisso.excluirCompromisso(indiceExclusao);
+                    break;
+                case 5:
+                    System.out.println("Encerrando o programa...");
+                    leitor.close();
+                    return;
+                default:
+                    System.out.println("Opção inválida. Por favor, escolha uma opção válida.");
+                    break;
             }
         }
-
-    System.out.println("Digite o número do mês que deseja listar os compromissos:");
-    int numeroMes = leitor.nextInt();
-
-    System.out.println("Compromissos para o mês " + numeroMes + ":");
-    System.out.println(calendario.listarCompromissos(numeroMes));
-
-    System.out.println("Todos os compromissos do ano:");
-    System.out.println(calendario.listarCompromissos());
     }
 }

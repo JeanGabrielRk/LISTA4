@@ -1,83 +1,59 @@
 package br.edu.up.modelos;
 
+import java.util.Scanner;
+
 public class Mes {
 
-    private int nome;
+    private String nome; 
     private int qtdeDias;
     private Dia[] dias;
 
-    public Mes(int nome, int qtdeDias) {
+    public Mes(String nome, int qtdeDias) {
         this.nome = nome;
         this.qtdeDias = qtdeDias;
         this.dias = new Dia[qtdeDias];
-    }
-
-    public int getNome() {
-        return nome;
-    }
-
-    public void setNome(int nome) {
-        this.nome = nome;
-    }
-
-    public int getQtdeDias() {
-        return qtdeDias;
-    }
-
-    public void setQtdeDias(int qtdeDias) {
-        this.qtdeDias = qtdeDias;
-    }
-
-    public Dia[] getDias() {
-        return dias;
-    }
-
-    public void setDias(Dia[] dias) {
-        this.dias = dias;
-    }
-
-    public void adicionarCompromisso(Compromisso comp, int diaMes) {
-
-        if (diaMes >= 1 && diaMes <= qtdeDias) {
-            dias[diaMes - 1].adicionarCompromisso(comp);
-        } 
-        else {
-            System.out.println("Dia não existe");
+        
+        for (int i = 0; i < qtdeDias; i++) {
+            dias[i] = new Dia(i + 1);
         }
     }
 
-    public void adicionarCompromisso(String pessoa, String local, String assunto, int hora, int diaMes) {
-
-        Compromisso comp = new Compromisso(pessoa, local, assunto, hora);
-
-        adicionarCompromisso(comp, diaMes);
-    }
-
-    public void excluirCompromisso(int diaMes, int hora) {
-
-        if (diaMes >= 1 && diaMes <= qtdeDias) {
-            dias[diaMes - 1].excluirCompromisso(hora);
-        } 
-        else {
+    public void adicionarCompromisso(Scanner leitor, int diaMes) {
+        if (diaMes > 0 && diaMes <= qtdeDias) {
+            dias[diaMes - 1].adicionarCompromisso(leitor);
+        } else {
             System.out.println("Dia inválido.");
         }
     }
 
-    public String listarCompromissos(int diaMes) {
-        if (diaMes >= 1 && diaMes <= qtdeDias) {
-            return dias[diaMes - 1].listarCompromissos();
+    public void listarCompromissos(int diaMes) {
+        if (diaMes > 0 && diaMes <= qtdeDias) {
+            dias[diaMes - 1].listarCompromissos();
         } else {
-            return "Dia inválido.";
+            System.out.println("Dia inválido.");
         }
     }
 
-    public String listarCompromissos() {
-
-        StringBuilder sb = new StringBuilder();
+    public void listarTodosCompromissos() {
         for (int i = 0; i < qtdeDias; i++) {
-            sb.append("Dia ").append(i + 1).append(": ").append(dias[i].listarCompromissos()).append("\n");
+            System.out.println("Dia " + (i + 1) + ":");
+            dias[i].listarCompromissos();
         }
-        return sb.toString();
+    }
+
+    public void consultarCompromisso(int diaMes, int indice) {
+        if (diaMes > 0 && diaMes <= qtdeDias) {
+            dias[diaMes - 1].consultarCompromisso(indice);
+        } else {
+            System.out.println("Dia inválido.");
+        }
+    }
+
+    public void excluirCompromisso(int diaMes, int indice) {
+        if (diaMes > 0 && diaMes <= qtdeDias) {
+            dias[diaMes - 1].excluirCompromisso(indice);
+        } else {
+            System.out.println("Dia inválido.");
+        }
     }
 }
-
