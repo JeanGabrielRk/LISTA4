@@ -74,10 +74,9 @@ public class EventoView {
     private void alterarEvento() {
         System.out.print("Digite o ID do evento a ser alterado: ");
         int idEvento = scanner.nextInt();
-        scanner.nextLine(); // Consume newline left-over
+        scanner.nextLine(); 
 
-        // Busca o evento pelo ID
-        Evento evento = controller.buscarEvento(idEvento);
+        Evento evento = controller.adicionarEvento(idEvento);
         if (evento == null) {
             System.out.println("Evento não encontrado!");
             return;
