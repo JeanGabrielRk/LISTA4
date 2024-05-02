@@ -1,12 +1,15 @@
 package telas;
 
-import java.time.LocalDate;
+import java.sql.Date;
+import java.util.List;
 import java.util.Scanner;
 
-import controles.EventoController;
 import modelos.Evento;
+import modelos.Reserva;
+import controles.EventoController;
 
 public class EventoView {
+
     private EventoController controller;
     private Scanner scanner;
 
@@ -15,105 +18,113 @@ public class EventoView {
         this.scanner = new Scanner(System.in);
     }
 
-    public void exibirMenu() {
-        int opcao;
-
+    public void mostrarMenu() {
+        int opcao = 0;
         do {
-            System.out.println("\nMenu de Gerenciamento de Eventos:");
-            System.out.println("1. Incluir evento");
-            System.out.println("2. Alterar evento");
-            System.out.println("3. Listar eventos");
-            System.out.println("4. Excluir evento");
-            System.out.println("5. Incluir reserva");
-            System.out.println("6. Alterar reserva");
-            System.out.println("7. Listar reservas");
-            System.out.println("8. Excluir reserva");
-            System.out.println("9. Sair");
-            System.out.print("Escolha uma opção: ");
+            System.out.println("Bem-vindo ao sistema de gerenciamento de eventos!");
+            System.out.println("1 - Listar eventos");
+            System.out.println("2 - Listar reservas");
+            System.out.println("3 - Adicionar evento");
+            System.out.println("4 - Fazer reserva");
+            System.out.println("5 - Sair");
+            System.out.println("Escolha uma opção:");
             opcao = scanner.nextInt();
-            scanner.nextLine();
-
             switch (opcao) {
                 case 1:
-                    incluirEvento();
+                    listarEventos();
                     break;
                 case 2:
-                    alterarEvento();
+                    listarReservas();
                     break;
-                case 9:
+                case 3:
+                    adicionarNovoEvento();
+                    break;
+                case 4:
+                    fazerReserva();
+                    break;
+                case 5:
                     System.out.println("Saindo...");
                     break;
                 default:
-                    System.out.println("Opção inválida!");
+                    System.out.println("Opção inválida! Por favor, escolha uma opção válida.");
             }
-        } while (opcao != 9);
+        } while (opcao != 5);
     }
 
-    private void incluirEvento() {
-        System.out.print("Nome do evento: ");
-        String nome = scanner.nextLine();
-
-        System.out.print("Data do evento (formato YYYY-MM-DD): ");
-        String dataEvento = scanner.nextLine();
-        LocalDate data = LocalDate.parse(dataEvento);
-
-        System.out.print("Local do evento: ");
-        String local = scanner.nextLine();
-
-        System.out.print("Lotação máxima do evento: ");
-        int lotacaoMaxima = scanner.nextInt();
-
-        System.out.print("Preço do ingresso: ");
-        double precoIngresso = scanner.nextDouble();
-
-        Evento evento = new Evento(nome, data, local, lotacaoMaxima, lotacaoMaxima, precoIngresso);
-        controller.adicionarEvento(evento);
-        System.out.println("Evento incluído com sucesso!");
+    public void listarEventos() {
+        List<Evento> eventos = controller.listarEventos();
+        if (eventos.isEmpty()) {
+            System.out.println("Nenhum evento cadastrado.");
+        } else {
+            System.out.println("Eventos disponíveis:");
+            for (Evento evento : eventos) {
+                System.out.println("Nome: " + evento.getNome());
+                System.out.println("Data: " + evento.getData());
+                System.out.println("Local: " + evento.getLocal());
+                System.out.println("Lotação máxima: " + evento.getLotacaoMaxima());
+                System.out.println("Ingressos vendidos: " + evento.getIngressosVendidos());
+                System.out.println("Preço do ingresso: " + evento.getPrecoIngresso());
+                System.out.println("--------------------------");
+            }
+        }
     }
 
-    private void alterarEvento() {
-        System.out.print("Digite o ID do evento a ser alterado: ");
-        int idEvento = scanner.nextInt();
-        scanner.nextLine(); 
-
-        Evento evento = controller.adicionarEvento(idEvento);
-        if (evento == null) {
-            System.out.println("Evento não encontrado!");
-            return;
+    public void listarReservas() {
+        List<Reserva> reservas = controller.listarReservas();
+        if (reservas.isEmpty()) {
+            System.out.println("Nenhuma reserva cadastrada.");
+        } else {
+            System.out.println("Reservas realizadas:");
+            for (Reserva reserva : reservas) {
+                System.out.println("Responsável: " + reserva.getResponsavel());
+                System.out.println("Quantidade de pessoas: " + reserva.getQuantidadePessoas());
+                System.out.println("Data da reserva: " + reserva.getDataReserva());
+                System.out.println("Valor total: " + reserva.getValorTotal());
+                System.out.println("--------------------------");
+            }
         }
+    }
 
-        System.out.print("Novo nome do evento (deixe em branco para não alterar): ");
-        String nome = scanner.nextLine();
-        if (!nome.isEmpty()) {
-            evento.setNome(nome);
-        }
-
-        System.out.print("Nova data do evento (formato YYYY-MM-DD, deixe em branco para não alterar): ");
-        String dataEvento = scanner.nextLine();
-        if (!dataEvento.isEmpty()) {
-            LocalDate data = LocalDate.parse(dataEvento);
-            evento.setData(data);
-        }
-
-        System.out.print("Novo local do evento (deixe em branco para não alterar): ");
-        String local = scanner.nextLine();
-        if (!local.isEmpty()) {
-            evento.setLocal(local);
-        }
-
-        System.out.print("Nova lotação máxima do evento (digite 0 para não alterar): ");
+    public void adicionarNovoEvento() {
+        System.out.println("Informe os dados do novo evento:");
+        System.out.println("Nome:");
+        String nome = scanner.next();
+        System.out.println("Data (no formato YYYY-MM-DD):");
+        String dataStr = scanner.next();
+        System.out.println("Local:");
+        String local = scanner.next();
+        System.out.println("Lotação máxima:");
         int lotacaoMaxima = scanner.nextInt();
-        if (lotacaoMaxima > 0) {
-            evento.setLotacaoMaxima(lotacaoMaxima);
-        }
-
-        System.out.print("Novo preço do ingresso (digite 0 para não alterar): ");
+        System.out.println("Preço do ingresso:");
         double precoIngresso = scanner.nextDouble();
-        if (precoIngresso > 0) {
-            evento.setPrecoIngresso(precoIngresso);
-        }
+        // Cria um novo evento
+        Evento novoEvento = new Evento(nome, Date.valueOf(dataStr), local, lotacaoMaxima, 0, precoIngresso);
+        // Adiciona o evento ao controle de eventos
+        controller.adicionarEvento(novoEvento);
+        System.out.println("Novo evento adicionado com sucesso!");
+    }
 
-        controller.atualizarEvento(evento);
-        System.out.println("Evento alterado com sucesso!");
+    public void fazerReserva() {
+        System.out.println("Informe os dados para a reserva:");
+        System.out.println("Nome do evento:");
+        String nomeEvento = scanner.next();
+        // Busca o evento pelo nome
+        Evento evento = null;
+        for (Evento e : controller.listarEventos()) {
+            if (e.getNome().equals(nomeEvento)) {
+                evento = e;
+                break;
+            }
+        }
+        if (evento != null) {
+            System.out.println("Nome do responsável pela reserva:");
+            String responsavel = scanner.next();
+            System.out.println("Quantidade de pessoas:");
+            int quantidadePessoas = scanner.nextInt();
+            // Realiza a reserva
+            controller.realizarReserva(evento, responsavel, quantidadePessoas, evento.getPrecoIngresso());
+        } else {
+            System.out.println("Evento não encontrado.");
+        }
     }
 }

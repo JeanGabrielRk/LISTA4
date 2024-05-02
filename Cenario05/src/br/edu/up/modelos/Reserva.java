@@ -1,15 +1,15 @@
 package modelos;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 public class Reserva {
 
     private String responsavel;
     private int quantidadePessoas;
-    private LocalDate dataReserva;
+    private Date dataReserva;
     private double valorTotal;
-    
-    public Reserva(String responsavel, int quantidadePessoas, LocalDate dataReserva, double valorTotal) {
+
+    public Reserva(String responsavel, int quantidadePessoas, Date dataReserva, double valorTotal) {
         this.responsavel = responsavel;
         this.quantidadePessoas = quantidadePessoas;
         this.dataReserva = dataReserva;
@@ -32,11 +32,11 @@ public class Reserva {
         this.quantidadePessoas = quantidadePessoas;
     }
 
-    public LocalDate getDataReserva() {
+    public Date getDataReserva() {
         return dataReserva;
     }
 
-    public void setDataReserva(LocalDate dataReserva) {
+    public void setDataReserva(Date dataReserva) {
         this.dataReserva = dataReserva;
     }
 

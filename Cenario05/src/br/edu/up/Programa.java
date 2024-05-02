@@ -7,6 +7,6 @@ public class Programa {
         EventoController controller = new EventoController();
         EventoView view = new EventoView(controller);
 
-        view.exibirMenu();
-    }
+        view.mostrarMenu();
+    }    
 }
