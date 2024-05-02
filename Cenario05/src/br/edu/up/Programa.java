@@ -1,5 +1,12 @@
-public class App {
+import controles.EventoController;
+import telas.EventoView;
+
+public class Programa {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        
+        EventoController controller = new EventoController();
+        EventoView view = new EventoView(controller);
+
+        view.exibirMenu();
     }
 }
