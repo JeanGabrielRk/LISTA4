@@ -19,7 +19,6 @@ public class Programa {
         ponto1.setX(10);
         ponto1.setY(3);
 
-        //atualizando
        
 
     }
