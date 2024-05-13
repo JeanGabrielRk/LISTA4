@@ -1,50 +1,26 @@
-public class Pessoa {
+
+public abstract class Pessoa {
 
     private String nome;
-    private double rg;
-    private double matricula;
-
-
-    public Pessoa(String nome, double rg, double matricula) {
-        this.nome = nome;
-        this.rg = rg;
-        this.matricula = matricula;
-    }
-
-
+    private String rg;
+    private String matricula;
+    
     public String getNome() {
         return nome;
     }
-
-
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-
-    public double getRg() {
+    public String getRg() {
         return rg;
     }
-
-
-    public void setRg(double rg) {
+    public void setRg(String rg) {
         this.rg = rg;
     }
-
-
-    public double getMatricula() {
+    public String getMatricula() {
         return matricula;
     }
-
-
-    public void setMatricula(double matricula) {
+    public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
-
-    
-
-    
-
-
-
 }

@@ -1,61 +1,33 @@
-public class Titulacao {
 
-    private String instituicao;
+
+public class Titulacao {
+    private String nomeInstituicao;
     private int anoConclusao;
     private String nomeTitulo;
-    private String tituloTcc;
-
-
-    public Titulacao(String instituicao, int anoConclusao, String nomeTitulo, String tituloTcc) {
-        this.instituicao = instituicao;
-        this.anoConclusao = anoConclusao;
-        this.nomeTitulo = nomeTitulo;
-        this.tituloTcc = tituloTcc;
+    private String tituloTrabalhoConclusao;
+    
+    public String getNomeInstituicao() {
+        return nomeInstituicao;
     }
-
-
-    public String getInstituicao() {
-        return instituicao;
+    public void setNomeInstituicao(String nomeInstituicao) {
+        this.nomeInstituicao = nomeInstituicao;
     }
-
-
-    public void setInstituicao(String instituicao) {
-        this.instituicao = instituicao;
-    }
-
-
     public int getAnoConclusao() {
         return anoConclusao;
     }
-
-
     public void setAnoConclusao(int anoConclusao) {
         this.anoConclusao = anoConclusao;
     }
-
-
     public String getNomeTitulo() {
         return nomeTitulo;
     }
-
-
     public void setNomeTitulo(String nomeTitulo) {
         this.nomeTitulo = nomeTitulo;
     }
-
-
-    public String getTituloTcc() {
-        return tituloTcc;
+    public String getTituloTrabalhoConclusao() {
+        return tituloTrabalhoConclusao;
     }
-
-
-    public void setTituloTcc(String tituloTcc) {
-        this.tituloTcc = tituloTcc;
+    public void setTituloTrabalhoConclusao(String tituloTrabalhoConclusao) {
+        this.tituloTrabalhoConclusao = tituloTrabalhoConclusao;
     }
-
-    
-
-    
-
-
 }

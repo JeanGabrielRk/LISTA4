@@ -1,78 +1,55 @@
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class Disciplina {
-
     private String nome;
-    private double identificador;
-    private String professor;
-    private List<String> alunos = new ArrayList<>();
-    private List<String> competenciasd = new ArrayList<>();
-
-
-    public Disciplina(String nome, double identificador, String professor, List<String> alunos,
-            List<String> competenciasd) {
-        this.nome = nome;
-        this.identificador = identificador;
-        this.professor = professor;
-        this.alunos = alunos;
-        this.competenciasd = competenciasd;
-    }
-
-
+    private String identificador;
+    private String curriculo;
+    private List<Competencia> competenciasNecessarias;
+    private List<Competencia> competenciasComplementares;
+    private Professor professor;
+    
+    private List<Aluno> alunosMatriculados;
     public String getNome() {
         return nome;
     }
-
-
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-
-    public double getIdentificador() {
+    public String getIdentificador() {
         return identificador;
     }
-
-
-    public void setIdentificador(double identificador) {
+    public void setIdentificador(String identificador) {
         this.identificador = identificador;
     }
-
-
-    public String getProfessor() {
+    public String getCurriculo() {
+        return curriculo;
+    }
+    public void setCurriculo(String curriculo) {
+        this.curriculo = curriculo;
+    }
+    public List<Competencia> getCompetenciasNecessarias() {
+        return competenciasNecessarias;
+    }
+    public void setCompetenciasNecessarias(List<Competencia> competenciasNecessarias) {
+        this.competenciasNecessarias = competenciasNecessarias;
+    }
+    public List<Competencia> getCompetenciasComplementares() {
+        return competenciasComplementares;
+    }
+    public void setCompetenciasComplementares(List<Competencia> competenciasComplementares) {
+        this.competenciasComplementares = competenciasComplementares;
+    }
+    public Professor getProfessor() {
         return professor;
     }
-
-
-    public void setProfessor(String professor) {
+    public void setProfessor(Professor professor) {
         this.professor = professor;
     }
-
-
-    public List<String> getAlunos() {
-        return alunos;
+    public List<Aluno> getAlunosMatriculados() {
+        return alunosMatriculados;
     }
-
-
-    public void setAlunos(List<String> alunos) {
-        this.alunos = alunos;
+    public void setAlunosMatriculados(List<Aluno> alunosMatriculados) {
+        this.alunosMatriculados = alunosMatriculados;
     }
-
-
-    public List<String> getCompetenciasd() {
-        return competenciasd;
-    }
-
-
-    public void setCompetenciasd(List<String> competenciasd) {
-        this.competenciasd = competenciasd;
-    }
-
-    
-
-
-    
-
-
 }

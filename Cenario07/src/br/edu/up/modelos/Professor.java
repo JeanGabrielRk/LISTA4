@@ -1,38 +1,20 @@
-public class Professor extends Pessoa{
 
-    private double idLattes;
+
+public class Professor extends Pessoa {
+
+    private String idLattes;
     private Titulacao titulacao;
 
-
-    public Professor(String nome, double rg, double matricula, double idLattes, Titulacao titulacao) {
-        super(nome, rg, matricula);
-        this.idLattes = idLattes;
-        this.titulacao = titulacao;
-    }
-
-
-    public double getIdLattes() {
+    public String getIdLattes() {
         return idLattes;
     }
-
-
-    public void setIdLattes(double idLattes) {
+    public void setIdLattes(String idLattes) {
         this.idLattes = idLattes;
     }
-
-
     public Titulacao getTitulacao() {
         return titulacao;
     }
-
-
     public void setTitulacao(Titulacao titulacao) {
         this.titulacao = titulacao;
     }
-
-    
-
-    
-
-
 }
