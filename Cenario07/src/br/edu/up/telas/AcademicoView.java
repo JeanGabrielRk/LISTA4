@@ -92,6 +92,6 @@ public class AcademicoView {
     }
 
     private void gerenciarDisciplinas() {
-        // Implemente a lógica para gerenciar disciplinas
+        
     }
 }
