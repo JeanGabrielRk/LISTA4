@@ -1,10 +1,7 @@
-package telas;
+package br.edu.up.telas;
 
-import controles.AcademicoController;
-import modelos.Aluno;
-import modelos.Disciplina;
-import modelos.Professor;
-import modelos.Titulacao;
+import br.edu.up.controles.AcademicoController;
+import br.edu.up.modelos.*;
 
 import java.util.List;
 import java.util.Scanner;
@@ -262,25 +259,26 @@ public class AcademicoView {
     private void adicionarDisciplina() {
         System.out.print("Digite o nome da disciplina: ");
         String nome = scanner.nextLine();
-        System.out.print("Digite o identificador da disciplina: ");
-        String identificador = scanner.nextLine();
-        System.out.print("Digite o currículo da disciplina: ");
-        String curriculo = scanner.nextLine();
+        System.out.print("Digite o código da disciplina: ");
+        String codigo = scanner.nextLine();
+        System.out.print("Digite a carga horária da disciplina (em horas): ");
+        int cargaHoraria = scanner.nextInt();
+        scanner.nextLine();  // Consume newline
 
         Disciplina disciplina = new Disciplina();
         disciplina.setNome(nome);
-        disciplina.setIdentificador(identificador);
-        disciplina.setCurriculo(curriculo);
+        disciplina.setCodigo(codigo);
+        disciplina.setCargaHoraria(cargaHoraria);
 
         controller.adicionarDisciplina(disciplina);
         System.out.println("Disciplina adicionada com sucesso!");
     }
 
     private void removerDisciplina() {
-        System.out.print("Digite o identificador da disciplina a ser removida: ");
-        String identificador = scanner.nextLine();
-        boolean removido = controller.removerDisciplina(identificador);
-        if (removido) {
+        System.out.print("Digite o código da disciplina a ser removida: ");
+        String codigo = scanner.nextLine();
+        boolean removida = controller.removerDisciplina(codigo);
+        if (removida) {
             System.out.println("Disciplina removida com sucesso!");
         } else {
             System.out.println("Disciplina não encontrada!");
@@ -294,8 +292,8 @@ public class AcademicoView {
         } else {
             for (Disciplina disciplina : disciplinas) {
                 System.out.println("Nome: " + disciplina.getNome());
-                System.out.println("Identificador: " + disciplina.getIdentificador());
-                System.out.println("Currículo: " + disciplina.getCurriculo());
+                System.out.println("Código: " + disciplina.getCodigo());
+                System.out.println("Carga Horária: " + disciplina.getCargaHoraria() + " horas");
                 System.out.println();
             }
         }

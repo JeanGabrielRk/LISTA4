@@ -1,8 +1,9 @@
-package modelos;
+package br.edu.up.modelos;
 
 public class Professor extends Pessoa {
     private String idLattes;
     private Titulacao titulacao;
+    private String matricula;
 
     public String getIdLattes() {
         return idLattes;
@@ -18,5 +19,13 @@ public class Professor extends Pessoa {
 
     public void setTitulacao(Titulacao titulacao) {
         this.titulacao = titulacao;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 }

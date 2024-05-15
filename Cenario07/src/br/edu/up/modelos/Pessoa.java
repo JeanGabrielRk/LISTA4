@@ -1,9 +1,8 @@
-package modelos;
+package br.edu.up.modelos;
 
 public abstract class Pessoa {
     private String nome;
     private String rg;
-    private String matricula;
 
     public String getNome() {
         return nome;
@@ -19,13 +18,5 @@ public abstract class Pessoa {
 
     public void setRg(String rg) {
         this.rg = rg;
-    }
-
-    public String getMatricula() {
-        return matricula;
-    }
-
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
     }
 }
