@@ -1,5 +1,10 @@
+import controles.AcademicoController;
+import telas.AcademicoView;
+
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        AcademicoController controller = new AcademicoController();
+        AcademicoView view = new AcademicoView(controller);
+        view.exibirMenuPrincipal();
     }
 }
