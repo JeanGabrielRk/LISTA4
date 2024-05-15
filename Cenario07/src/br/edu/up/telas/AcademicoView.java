@@ -226,6 +226,9 @@ public class AcademicoView {
     }
 
     private void gerenciarDisciplinas() {
+<<<<<<< HEAD
+        
+=======
         int opcao;
         do {
             System.out.println("\nMenu de Disciplinas:");
@@ -297,5 +300,6 @@ public class AcademicoView {
                 System.out.println();
             }
         }
+>>>>>>> 10ff0e31426b1bf91066ad40ea5b75d8e507d6c0
     }
 }
