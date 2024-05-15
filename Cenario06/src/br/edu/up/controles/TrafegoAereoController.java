@@ -45,17 +45,17 @@ public class TrafegoAereoController {
         int hora = scanner.nextInt();
         System.out.println("Informe os minutos do voo: ");
         int minutos = scanner.nextInt();
-        scanner.nextLine(); // Consumir a nova linha
+        scanner.nextLine(); 
         LocalDateTime dataVoo = LocalDateTime.of(ano, mes, dia, hora, minutos);
         
-        // Capturando informações sobre a aeronave
+        
         System.out.println("Informe o código da aeronave: ");
         String codigoAeronave = scanner.nextLine();
         System.out.println("Informe o tipo da aeronave: ");
         String tipoAeronave = scanner.nextLine();
         System.out.println("Informe a quantidade de assentos da aeronave: ");
         int quantidadeAssentosAeronave = scanner.nextInt();
-        scanner.nextLine(); // Consumir a nova linha
+        scanner.nextLine(); 
         Aeronave aeronave = new Aeronave(codigoAeronave, tipoAeronave, quantidadeAssentosAeronave);
         
         Passageiro passageiro = new Passageiro(nome, rg, identificadorBagagem, new Passagem(numeroAssento, classeAssento, dataVoo), aeronave);
@@ -72,14 +72,14 @@ public class TrafegoAereoController {
         System.out.println("Informe a matrícula do funcionário: ");
         String matriculaFuncionario = scanner.nextLine();
         
-        // Capturando informações sobre a aeronave
+        
         System.out.println("Informe o código da aeronave: ");
         String codigoAeronave = scanner.nextLine();
         System.out.println("Informe o tipo da aeronave: ");
         String tipoAeronave = scanner.nextLine();
         System.out.println("Informe a quantidade de assentos da aeronave: ");
         int quantidadeAssentosAeronave = scanner.nextInt();
-        scanner.nextLine(); // Consumir a nova linha
+        scanner.nextLine(); 
         Aeronave aeronave = new Aeronave(codigoAeronave, tipoAeronave, quantidadeAssentosAeronave);
         
         Tripulacao tripulacao = new Tripulacao(nome, rg, identificacaoAeronautica, matriculaFuncionario, aeronave);
@@ -109,7 +109,7 @@ public class TrafegoAereoController {
                 System.out.println("Tipo da Aeronave: " + aeronave.getTipo());
                 System.out.println("Quantidade de Assentos da Aeronave: " + aeronave.getQuantidadeAssentos());
             }
-            System.out.println(); // Adiciona uma linha em branco entre as informações de cada pessoa
+            System.out.println(); 
         }
     }
     
