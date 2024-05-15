@@ -86,13 +86,13 @@ public class AcademicoView {
         String matricula = scanner.nextLine();
         System.out.print("Digite o ID Lattes do professor: ");
         String idLattes = scanner.nextLine();
-        // Titulação
+        
         Titulacao titulacao = new Titulacao();
         System.out.print("Digite o nome da instituição da titulação: ");
         titulacao.setNomeInstituicao(scanner.nextLine());
         System.out.print("Digite o ano de conclusão da titulação: ");
         titulacao.setAnoConclusao(scanner.nextInt());
-        scanner.nextLine();  // Consume newline
+        scanner.nextLine();  
         System.out.print("Digite o nome do título: ");
         titulacao.setNomeTitulo(scanner.nextLine());
         System.out.print("Digite o título do trabalho de conclusão: ");
@@ -179,7 +179,7 @@ public class AcademicoView {
         String matricula = scanner.nextLine();
         System.out.print("Digite o ano de ingresso do aluno: ");
         int anoIngresso = scanner.nextInt();
-        scanner.nextLine();  // Consume newline
+        scanner.nextLine();  
         System.out.print("Digite o nome do curso do aluno: ");
         String nomeCurso = scanner.nextLine();
         System.out.print("Digite o turno do aluno: ");
@@ -231,7 +231,7 @@ public class AcademicoView {
         String codigo = scanner.nextLine();
         System.out.print("Digite a carga horária da disciplina (em horas): ");
         int cargaHoraria = scanner.nextInt();
-        scanner.nextLine();  // Consume newline
+        scanner.nextLine();  
     
         Disciplina disciplina = new Disciplina();
         disciplina.setNome(nome);
