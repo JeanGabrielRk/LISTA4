@@ -224,11 +224,36 @@ public class AcademicoView {
             }
         }
     }
-
+    private void adicionarDisciplina() {
+        System.out.print("Digite o nome da disciplina: ");
+        String nome = scanner.nextLine();
+        System.out.print("Digite o código da disciplina: ");
+        String codigo = scanner.nextLine();
+        System.out.print("Digite a carga horária da disciplina (em horas): ");
+        int cargaHoraria = scanner.nextInt();
+        scanner.nextLine();  // Consume newline
+    
+        Disciplina disciplina = new Disciplina();
+        disciplina.setNome(nome);
+        disciplina.setCodigo(codigo);
+        disciplina.setCargaHoraria(cargaHoraria);
+    
+        controller.adicionarDisciplina(disciplina);
+        System.out.println("Disciplina adicionada com sucesso!");
+    }
+    
+    private void removerDisciplina() {
+        System.out.print("Digite o código da disciplina a ser removida: ");
+        String codigo = scanner.nextLine();
+        boolean removida = controller.removerDisciplina(codigo);
+        if (removida) {
+            System.out.println("Disciplina removida com sucesso!");
+        } else {
+            System.out.println("Disciplina não encontrada!");
+        }
+    }
+    
     private void gerenciarDisciplinas() {
-<<<<<<< HEAD
-        
-=======
         int opcao;
         do {
             System.out.println("\nMenu de Disciplinas:");
@@ -239,7 +264,7 @@ public class AcademicoView {
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
             scanner.nextLine();
-
+    
             switch (opcao) {
                 case 1:
                     adicionarDisciplina();
@@ -258,36 +283,7 @@ public class AcademicoView {
             }
         } while (opcao != 4);
     }
-
-    private void adicionarDisciplina() {
-        System.out.print("Digite o nome da disciplina: ");
-        String nome = scanner.nextLine();
-        System.out.print("Digite o código da disciplina: ");
-        String codigo = scanner.nextLine();
-        System.out.print("Digite a carga horária da disciplina (em horas): ");
-        int cargaHoraria = scanner.nextInt();
-        scanner.nextLine();  // Consume newline
-
-        Disciplina disciplina = new Disciplina();
-        disciplina.setNome(nome);
-        disciplina.setCodigo(codigo);
-        disciplina.setCargaHoraria(cargaHoraria);
-
-        controller.adicionarDisciplina(disciplina);
-        System.out.println("Disciplina adicionada com sucesso!");
-    }
-
-    private void removerDisciplina() {
-        System.out.print("Digite o código da disciplina a ser removida: ");
-        String codigo = scanner.nextLine();
-        boolean removida = controller.removerDisciplina(codigo);
-        if (removida) {
-            System.out.println("Disciplina removida com sucesso!");
-        } else {
-            System.out.println("Disciplina não encontrada!");
-        }
-    }
-
+    
     private void listarDisciplinas() {
         List<Disciplina> disciplinas = controller.listarDisciplinas();
         if (disciplinas.isEmpty()) {
@@ -300,6 +296,6 @@ public class AcademicoView {
                 System.out.println();
             }
         }
->>>>>>> 10ff0e31426b1bf91066ad40ea5b75d8e507d6c0
-    }
+    }    
+        
 }
