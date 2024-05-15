@@ -5,12 +5,20 @@ import br.edu.up.modelos.*;
 
 public class Programa {
     public static void main(String[] args) {
-        
         Scanner leitor = new Scanner(System.in);
 
-        System.out.println("Digite o dia do compromisso: ");
+        System.out.println("Digite o ano: ");
+        int ano = leitor.nextInt();
+
+        System.out.println("Digite o mês (1 para Janeiro, 2 para Fevereiro, etc.): ");
+        int mes = leitor.nextInt();
+
+        System.out.println("Digite o dia: ");
         int dia = leitor.nextInt();
 
+        Ano anoAgenda = new Ano(ano, isBissexto(ano));
+        Mes mesAgenda = new Mes(getNomeMes(mes), getQtdeDiasMes(mes, isBissexto(ano)));
+        anoAgenda.adicionarMes(mesAgenda, mes);
         Dia diaCompromisso = new Dia(dia);
 
         while (true) {
@@ -50,5 +58,23 @@ public class Programa {
                     break;
             }
         }
+    }
+
+    public static boolean isBissexto(int ano) {
+        return (ano % 400 == 0) || ((ano % 4 == 0) && (ano % 100 != 0));
+    }
+
+    public static String getNomeMes(int mes) {
+        String[] nomes = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+                          "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
+        return nomes[mes - 1];
+    }
+
+    public static int getQtdeDiasMes(int mes, boolean bissexto) {
+        int[] diasPorMes = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        if (mes == 2 && bissexto) {
+            return 29;
+        }
+        return diasPorMes[mes - 1];
     }
 }
