@@ -15,7 +15,6 @@ public class Livro {
         this.isbn = isbn;
         this.ano = ano;
     }
-    
 
     public String getCodigo() {
         return codigo;
@@ -56,5 +55,4 @@ public class Livro {
     public void setAno(int ano) {
         this.ano = ano;
     }
-  
 }
