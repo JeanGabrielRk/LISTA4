@@ -16,7 +16,8 @@ public class Controlador {
             switch (opcao) {
                 case 1:
                     Veiculo veiculo = menu.capturarDadosVeiculo();
-                    if (estacionamento.entrarVeiculo(veiculo)) {
+                    String periodoEntrada = menu.capturarPeriodo();
+                    if (estacionamento.entrarVeiculo(veiculo, periodoEntrada)) {
                         System.out.println("Veículo estacionado com sucesso.");
                     } else {
                         System.out.println("Estacionamento cheio.");
@@ -24,18 +25,17 @@ public class Controlador {
                     break;
                 case 2:
                     String placa = menu.capturarPlaca();
-                    Veiculo veiculoSaida = estacionamento.sairVeiculo(placa);
+                    String periodoSaida = menu.capturarPeriodo();
+                    Veiculo veiculoSaida = estacionamento.sairVeiculo(placa, periodoSaida);
                     if (veiculoSaida != null) {
-                        estacionamento.registrarPagamento(5.00);
                         System.out.println("Veículo retirado com sucesso.");
                     } else {
                         System.out.println("Veículo não encontrado.");
                     }
                     break;
-                    case 3:
-                    System.out.print("Informe o período (manhã, tarde, noite): ");
-                    String periodo = menu.capturarPeriodo();
-                    estacionamento.emitirRelatorio(periodo);
+                case 3:
+                    String periodoRelatorio = menu.capturarPeriodo();
+                    estacionamento.emitirRelatorio(periodoRelatorio);
                     break;
                 case 4:
                     executando = false;
