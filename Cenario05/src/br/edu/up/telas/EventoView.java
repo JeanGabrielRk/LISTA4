@@ -97,9 +97,7 @@ public class EventoView {
         int lotacaoMaxima = scanner.nextInt();
         System.out.println("Preço do ingresso:");
         double precoIngresso = scanner.nextDouble();
-        // Cria um novo evento
         Evento novoEvento = new Evento(nome, Date.valueOf(dataStr), local, lotacaoMaxima, 0, precoIngresso);
-        // Adiciona o evento ao controle de eventos
         controller.adicionarEvento(novoEvento);
         System.out.println("Novo evento adicionado com sucesso!");
     }
@@ -108,7 +106,6 @@ public class EventoView {
         System.out.println("Informe os dados para a reserva:");
         System.out.println("Nome do evento:");
         String nomeEvento = scanner.next();
-        // Busca o evento pelo nome
         Evento evento = null;
         for (Evento e : controller.listarEventos()) {
             if (e.getNome().equals(nomeEvento)) {
@@ -121,7 +118,6 @@ public class EventoView {
             String responsavel = scanner.next();
             System.out.println("Quantidade de pessoas:");
             int quantidadePessoas = scanner.nextInt();
-            // Realiza a reserva
             controller.realizarReserva(evento, responsavel, quantidadePessoas, evento.getPrecoIngresso());
         } else {
             System.out.println("Evento não encontrado.");
